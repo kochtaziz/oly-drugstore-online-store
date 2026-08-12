@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Oly Drugstore Online Store
 
-## Getting Started
+Customer ordering website prototype for Oly Drugstore.
 
-First, run the development server:
+The goal is to let customers browse products, choose a store, select delivery or pickup, choose a payment method, and send the order through WhatsApp so the cashier can confirm and prepare it.
 
-```bash
+## Version 1 Scope
+
+- Product catalog based on sample Oly POS products
+- Store selection for Bizerte and Tunis
+- Store-aware stock display
+- Out-of-stock handling
+- Cart and checkout flow
+- Customer fields: full name, phone, city, address, notes
+- Delivery modes: local delivery, distance delivery, pickup
+- Payment modes: pay on delivery, card placeholder, pay in store for pickup
+- French, English, and Arabic UI
+- Tobacco category enabled
+- WhatsApp order message generation
+
+## Store Locations
+
+| Store | Address |
+| --- | --- |
+| Oly Drugstore Bizerte | 07 Rue 2 Mars 1934, Bizerte 7000 |
+| Oly Drugstore Tunis | V43J+R99, Tunis |
+
+## Production Architecture Recommendation
+
+Do not connect the public website directly to the POS local XML file.
+
+Recommended structure:
+
+1. The POS app remains local and fast inside each store.
+2. Each POS app syncs product, stock, store status, and product image data to a backend when online.
+3. If a POS app is offline, that store is shown as closed online.
+4. The website reads products and stock from the backend.
+5. Website orders are saved to the backend.
+6. The POS app shows incoming online orders in an Online Orders tab.
+7. The cashier confirms, prepares, cancels, or marks the order as delivered/picked up.
+
+## Next POS Changes Needed
+
+- Add product image path/file support to the Product model
+- Add online visibility status per product
+- Add store online heartbeat/sync status
+- Add Online Orders tab
+- Add order status workflow: New, Confirmed, Preparing, Ready, Delivered, Cancelled
+- Add backend sync when internet is available
+
+## Development
+
+```powershell
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```powershell
+npm run build
+```
