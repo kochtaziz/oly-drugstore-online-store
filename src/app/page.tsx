@@ -46,141 +46,21 @@ const stores: Array<{
 ];
 
 const products: Product[] = [
-  {
-    id: "safia-water-15",
-    name: "Safia Water 1.5L",
-    category: "Drinks",
-    price: 1,
-    image: "SA",
-    barcode: "619100001",
-    stock: { bizerte: 72, tunis: 48 },
-  },
-  {
-    id: "boga-cidre",
-    name: "Boga Cidre 24cl",
-    category: "Drinks",
-    price: 1.6,
-    image: "BO",
-    barcode: "619100004",
-    stock: { bizerte: 48, tunis: 30 },
-  },
-  {
-    id: "apla",
-    name: "Apla 24cl",
-    category: "Drinks",
-    price: 1.5,
-    image: "AP",
-    barcode: "619100006",
-    stock: { bizerte: 48, tunis: 30 },
-  },
-  {
-    id: "saida-biscuits",
-    name: "Saida Biscuits",
-    category: "Snacks",
-    price: 0.9,
-    image: "SB",
-    barcode: "619100012",
-    stock: { bizerte: 70, tunis: 50 },
-  },
-  {
-    id: "maestro-chocolate",
-    name: "Maestro Chocolate Bar",
-    category: "Snacks",
-    price: 1.9,
-    image: "MC",
-    barcode: "619100014",
-    stock: { bizerte: 45, tunis: 30 },
-  },
-  {
-    id: "chips-40g",
-    name: "Chips 40g",
-    category: "Snacks",
-    price: 1.3,
-    image: "CH",
-    barcode: "619100015",
-    stock: { bizerte: 60, tunis: 0 },
-  },
-  {
-    id: "lilas-tissues",
-    name: "Lilas Tissues Pack",
-    category: "Hygiene",
-    price: 1.2,
-    image: "LT",
-    barcode: "619100017",
-    stock: { bizerte: 80, tunis: 60 },
-  },
-  {
-    id: "hand-sanitizer",
-    name: "Hand Sanitizer 100ml",
-    category: "Hygiene",
-    price: 3.5,
-    image: "HS",
-    barcode: "619100020",
-    stock: { bizerte: 35, tunis: 24 },
-  },
-  {
-    id: "toothpaste",
-    name: "Toothpaste 75ml",
-    category: "Hygiene",
-    price: 4.2,
-    image: "TP",
-    barcode: "619100022",
-    stock: { bizerte: 32, tunis: 0 },
-  },
-  {
-    id: "baby-wipes",
-    name: "Baby Wipes 72pcs",
-    category: "Baby",
-    price: 5.5,
-    image: "BW",
-    barcode: "619100024",
-    stock: { bizerte: 24, tunis: 18 },
-  },
-  {
-    id: "diapers",
-    name: "Peau Douce Diapers",
-    category: "Baby",
-    price: 22.5,
-    image: "PD",
-    barcode: "619100025",
-    stock: { bizerte: 12, tunis: 0 },
-  },
-  {
-    id: "detergent",
-    name: "Laundry Detergent 1kg",
-    category: "Household",
-    price: 6.5,
-    image: "LD",
-    barcode: "619100026",
-    stock: { bizerte: 18, tunis: 0 },
-  },
-  {
-    id: "lighter",
-    name: "Briquet Lighter",
-    category: "Tobacco",
-    price: 1,
-    image: "BR",
-    barcode: "619100028",
-    stock: { bizerte: 80, tunis: 60 },
-  },
-  {
-    id: "cigarettes",
-    name: "Cigarettes 20 Pack",
-    category: "Tobacco",
-    price: 10,
-    image: "20",
-    barcode: "619100029",
-    stock: { bizerte: 35, tunis: 0 },
-  },
-  {
-    id: "recharge-card",
-    name: "Phone Recharge Card 5 DT",
-    category: "Services",
-    price: 5,
-    image: "5D",
-    barcode: "619100030",
-    stock: { bizerte: 50, tunis: 40 },
-  },
+  { id: "safia-water-15", name: "Safia Water 1.5L", category: "Drinks", price: 1, image: "SA", barcode: "619100001", stock: { bizerte: 72, tunis: 48 } },
+  { id: "boga-cidre", name: "Boga Cidre 24cl", category: "Drinks", price: 1.6, image: "BO", barcode: "619100004", stock: { bizerte: 48, tunis: 30 } },
+  { id: "apla", name: "Apla 24cl", category: "Drinks", price: 1.5, image: "AP", barcode: "619100006", stock: { bizerte: 48, tunis: 30 } },
+  { id: "saida-biscuits", name: "Saida Biscuits", category: "Snacks", price: 0.9, image: "SB", barcode: "619100012", stock: { bizerte: 70, tunis: 50 } },
+  { id: "maestro-chocolate", name: "Maestro Chocolate Bar", category: "Snacks", price: 1.9, image: "MC", barcode: "619100014", stock: { bizerte: 45, tunis: 30 } },
+  { id: "chips-40g", name: "Chips 40g", category: "Snacks", price: 1.3, image: "CH", barcode: "619100015", stock: { bizerte: 60, tunis: 0 } },
+  { id: "lilas-tissues", name: "Lilas Tissues Pack", category: "Hygiene", price: 1.2, image: "LT", barcode: "619100017", stock: { bizerte: 80, tunis: 60 } },
+  { id: "hand-sanitizer", name: "Hand Sanitizer 100ml", category: "Hygiene", price: 3.5, image: "HS", barcode: "619100020", stock: { bizerte: 35, tunis: 24 } },
+  { id: "toothpaste", name: "Toothpaste 75ml", category: "Hygiene", price: 4.2, image: "TP", barcode: "619100022", stock: { bizerte: 32, tunis: 0 } },
+  { id: "baby-wipes", name: "Baby Wipes 72pcs", category: "Baby", price: 5.5, image: "BW", barcode: "619100024", stock: { bizerte: 24, tunis: 18 } },
+  { id: "diapers", name: "Peau Douce Diapers", category: "Baby", price: 22.5, image: "PD", barcode: "619100025", stock: { bizerte: 12, tunis: 0 } },
+  { id: "detergent", name: "Laundry Detergent 1kg", category: "Household", price: 6.5, image: "LD", barcode: "619100026", stock: { bizerte: 18, tunis: 0 } },
+  { id: "lighter", name: "Briquet Lighter", category: "Tobacco", price: 1, image: "BR", barcode: "619100028", stock: { bizerte: 80, tunis: 60 } },
+  { id: "cigarettes", name: "Cigarettes 20 Pack", category: "Tobacco", price: 10, image: "20", barcode: "619100029", stock: { bizerte: 35, tunis: 0 } },
+  { id: "recharge-card", name: "Phone Recharge Card 5 DT", category: "Services", price: 5, image: "5D", barcode: "619100030", stock: { bizerte: 50, tunis: 40 } },
 ];
 
 const copy = {
@@ -189,7 +69,15 @@ const copy = {
     heroBadge: "Commande en ligne connectee au POS",
     title: "Oly Drugstore",
     subtitle:
-      "Commandez vos produits, choisissez le magasin, la livraison ou le retrait, puis envoyez la commande vers WhatsApp pour confirmation.",
+      "Vos produits du quotidien, disponibles par magasin, avec retrait ou livraison confirmee par WhatsApp.",
+    welcome: "Bienvenue chez Oly",
+    welcomeText:
+      "Choisissez vos articles, confirmez vos coordonnees, puis le caissier prepare la commande.",
+    start: "Commencer la commande",
+    browse: "Voir les produits",
+    fast: "Livraison locale",
+    pickupCopy: "Retrait magasin",
+    stockLive: "Stock par magasin",
     search: "Rechercher un produit ou code-barres",
     all: "Tous",
     cart: "Panier",
@@ -213,25 +101,36 @@ const copy = {
     total: "Total",
     stock: "Stock",
     out: "Rupture",
-    open: "Ouvert en ligne",
-    closed: "Ferme en ligne",
+    open: "Ouvert",
+    closed: "Ferme",
     sameCity: "Livraison locale",
     distance: "Livraison distance",
     feeLater: "Frais calcules par la societe de livraison",
     whatsapp: "Envoyer vers WhatsApp",
     empty: "Votre panier est vide.",
     onlineRule:
-      "Si le POS d'un magasin est hors ligne, le magasin apparait ferme sur le site.",
+      "Si le POS d'un magasin est hors ligne, ce magasin apparait ferme sur le site.",
     imageNote:
-      "Images produits: placeholders pour V1. En production, elles viennent du POS.",
+      "Images produits temporaires en V1. En production, elles viennent du POS.",
     required: "Remplissez les champs obligatoires avant d'envoyer.",
+    items: "articles",
+    otherStore: "Autre magasin",
+    orderSummary: "Resume rapide",
   },
   en: {
     dir: "ltr",
     heroBadge: "Online ordering connected to POS",
     title: "Oly Drugstore",
     subtitle:
-      "Order products, choose store pickup or delivery, then send the order to WhatsApp for cashier confirmation.",
+      "Everyday products with store-aware stock, pickup, delivery, and WhatsApp confirmation.",
+    welcome: "Welcome to Oly",
+    welcomeText:
+      "Choose your items, confirm your details, and the cashier prepares the order.",
+    start: "Start order",
+    browse: "Browse products",
+    fast: "Local delivery",
+    pickupCopy: "Store pickup",
+    stockLive: "Stock by store",
     search: "Search product or barcode",
     all: "All",
     cart: "Cart",
@@ -255,8 +154,8 @@ const copy = {
     total: "Total",
     stock: "Stock",
     out: "Out of stock",
-    open: "Online open",
-    closed: "Online closed",
+    open: "Open",
+    closed: "Closed",
     sameCity: "Local delivery",
     distance: "Distance delivery",
     feeLater: "Fee calculated by delivery company",
@@ -265,15 +164,26 @@ const copy = {
     onlineRule:
       "If a store POS is offline, that store appears closed on the website.",
     imageNote:
-      "Product images: placeholders for V1. In production, they come from POS.",
+      "Temporary product images for V1. In production, they come from POS.",
     required: "Fill all required fields before sending.",
+    items: "items",
+    otherStore: "Other store",
+    orderSummary: "Quick summary",
   },
   ar: {
     dir: "rtl",
     heroBadge: "طلبات اونلاين مرتبطة بنظام البيع",
     title: "Oly Drugstore",
     subtitle:
-      "اختر المنتجات، حدد المتجر أو التوصيل، ثم أرسل الطلب عبر واتساب لتأكيده من طرف الكاشير.",
+      "منتجات يومية مع مخزون حسب المتجر، استلام أو توصيل، وتأكيد عبر واتساب.",
+    welcome: "مرحبا بكم في Oly",
+    welcomeText:
+      "اختر المنتجات، أكد معلوماتك، ثم يقوم الكاشير بتحضير الطلب.",
+    start: "ابدأ الطلب",
+    browse: "عرض المنتجات",
+    fast: "توصيل محلي",
+    pickupCopy: "استلام من المتجر",
+    stockLive: "المخزون حسب المتجر",
     search: "ابحث عن منتج أو كود بار",
     all: "الكل",
     cart: "السلة",
@@ -297,8 +207,8 @@ const copy = {
     total: "المجموع",
     stock: "المخزون",
     out: "غير متوفر",
-    open: "مفتوح اونلاين",
-    closed: "مغلق اونلاين",
+    open: "مفتوح",
+    closed: "مغلق",
     sameCity: "توصيل محلي",
     distance: "توصيل بين المدن",
     feeLater: "يتم تحديد السعر من شركة التوصيل",
@@ -309,6 +219,9 @@ const copy = {
     imageNote:
       "صور المنتجات مؤقتة في النسخة الأولى. لاحقا تأتي من نظام البيع.",
     required: "يرجى ملء كل البيانات المطلوبة قبل الإرسال.",
+    items: "منتجات",
+    otherStore: "متجر آخر",
+    orderSummary: "ملخص سريع",
   },
 } as const;
 
@@ -371,12 +284,12 @@ export default function Home() {
     (sum, item) => sum + item.product.price * item.quantity,
     0,
   );
+  const cartQuantity = cartRows.reduce((sum, item) => sum + item.quantity, 0);
   const customerCity = customer.city.trim().toLowerCase();
   const deliveryProcess =
     deliveryType === "pickup"
       ? t.pickup
-      : customerCity &&
-          customerCity === selectedStoreInfo.city.toLowerCase()
+      : customerCity && customerCity === selectedStoreInfo.city.toLowerCase()
         ? t.sameCity
         : t.distance;
 
@@ -413,7 +326,13 @@ export default function Home() {
 
   function submitOrder(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!customer.fullName || !customer.phone || !customer.city || !customer.address || !cartRows.length) {
+    if (
+      !customer.fullName ||
+      !customer.phone ||
+      !customer.city ||
+      !customer.address ||
+      !cartRows.length
+    ) {
       setError(t.required);
       return;
     }
@@ -424,7 +343,7 @@ export default function Home() {
           ? t.payCard
           : t.payStore;
     const lines = [
-      `Oly Drugstore - Online order`,
+      "Oly Drugstore - Online order",
       `${t.customer}: ${customer.fullName}`,
       `${t.phone}: ${customer.phone}`,
       `${t.city}: ${customer.city}`,
@@ -432,7 +351,7 @@ export default function Home() {
       `${t.store}: ${selectedStoreInfo.name}`,
       `${t.deliveryType}: ${deliveryProcess}`,
       `${t.payment}: ${paymentText}`,
-      ``,
+      "",
       `${t.cart}:`,
       ...cartRows.map(
         (item) =>
@@ -440,7 +359,7 @@ export default function Home() {
             item.product.price * item.quantity,
           )}`,
       ),
-      ``,
+      "",
       `${t.total}: ${money(total)}`,
       `${t.notes}: ${customer.notes || "-"}`,
     ];
@@ -451,31 +370,34 @@ export default function Home() {
   }
 
   return (
-    <main
-      dir={t.dir}
-      className="min-h-screen bg-[#f5f7f2] text-slate-950"
-    >
-      <section className="border-b border-emerald-900/10 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-[0.22em] text-emerald-700">
-                {t.heroBadge}
-              </p>
-              <h1 className="mt-3 text-4xl font-black tracking-tight sm:text-6xl">
-                {t.title}
-              </h1>
+    <main dir={t.dir} className="min-h-screen bg-[#f3f6ef] pb-28 text-slate-950 lg:pb-0">
+      <header className="sticky top-0 z-30 border-b border-emerald-950/10 bg-white/90 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+          <a href="#welcome" className="flex items-center gap-3">
+            <span className="grid h-10 w-10 place-items-center rounded-lg bg-emerald-800 text-lg font-black text-white shadow-sm">
+              O
+            </span>
+            <span>
+              <span className="block text-sm font-black leading-4">Oly</span>
+              <span className="block text-xs font-semibold text-slate-500">
+                Drugstore
+              </span>
+            </span>
+          </a>
+          <div className="flex items-center gap-2">
+            <div className="hidden rounded-full border border-emerald-900/10 bg-emerald-50 px-3 py-2 text-xs font-bold text-emerald-800 sm:block">
+              {selectedStoreInfo.city} · {selectedStoreInfo.online ? t.open : t.closed}
             </div>
-            <div className="flex gap-2 rounded-md border border-slate-200 bg-slate-50 p-1">
+            <div className="flex rounded-lg border border-slate-200 bg-slate-50 p-1">
               {(["fr", "en", "ar"] as Language[]).map((item) => (
                 <button
                   key={item}
                   type="button"
                   onClick={() => setLanguage(item)}
-                  className={`rounded px-4 py-2 text-sm font-bold ${
+                  className={`rounded-md px-3 py-2 text-xs font-black transition ${
                     language === item
-                      ? "bg-emerald-800 text-white"
-                      : "text-slate-600 hover:bg-white"
+                      ? "bg-emerald-800 text-white shadow-sm"
+                      : "text-slate-600"
                   }`}
                 >
                   {item.toUpperCase()}
@@ -483,267 +405,288 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="grid gap-5 lg:grid-cols-[1fr_0.75fr] lg:items-end">
-            <p className="max-w-3xl text-lg leading-8 text-slate-600">
+        </div>
+      </header>
+
+      <section id="welcome" className="overflow-hidden bg-white">
+        <div className="mx-auto grid min-h-[calc(100svh-65px)] max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:px-8">
+          <div className="reveal">
+            <p className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-emerald-800">
+              {t.heroBadge}
+            </p>
+            <h1 className="mt-6 max-w-3xl text-5xl font-black leading-[0.95] tracking-tight text-slate-950 sm:text-7xl">
+              {t.welcome}
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
               {t.subtitle}
             </p>
-            <div className="grid gap-2 rounded-lg border border-emerald-900/10 bg-emerald-50 p-4 text-sm text-emerald-950">
-              <p>{t.onlineRule}</p>
-              <p>{t.imageNote}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[1fr_390px] lg:px-8">
-        <div className="space-y-5">
-          <div className="rounded-lg border border-slate-200 bg-white p-4">
-            <div className="grid gap-3 lg:grid-cols-[1fr_220px]">
-              <input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder={t.search}
-                className="h-12 rounded-md border border-slate-200 px-4 text-base outline-none focus:border-emerald-700"
-              />
-              <select
-                value={selectedStore}
-                onChange={(event) => setSelectedStore(event.target.value as StoreId)}
-                className="h-12 rounded-md border border-slate-200 px-4 font-semibold outline-none focus:border-emerald-700"
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#shop"
+                className="rounded-lg bg-emerald-800 px-6 py-4 text-center text-sm font-black text-white shadow-lg shadow-emerald-900/20 transition hover:-translate-y-0.5 hover:bg-emerald-900"
               >
-                {stores.map((store) => (
-                  <option key={store.id} value={store.id}>
-                    {store.name}
-                  </option>
-                ))}
-              </select>
+                {t.start}
+              </a>
+              <a
+                href="#checkout"
+                className="rounded-lg border border-slate-200 bg-white px-6 py-4 text-center text-sm font-black text-slate-800 transition hover:-translate-y-0.5 hover:border-emerald-300"
+              >
+                {t.checkout}
+              </a>
             </div>
-            <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
-              {categories.map((item) => (
-                <button
+            <div className="mt-8 grid grid-cols-3 gap-2 sm:max-w-xl sm:gap-3">
+              {[t.fast, t.pickupCopy, t.stockLive].map((item) => (
+                <div
                   key={item}
-                  type="button"
-                  onClick={() => setCategory(item)}
-                  className={`shrink-0 rounded-md border px-4 py-3 text-sm font-bold ${
-                    category === item
-                      ? "border-emerald-800 bg-emerald-800 text-white"
-                      : "border-slate-200 bg-white text-slate-700"
-                  }`}
+                  className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-center text-xs font-black text-slate-700 sm:p-4 sm:text-sm"
                 >
-                  {item === "All" ? t.all : item}
-                </button>
+                  {item}
+                </div>
               ))}
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {filteredProducts.map((product) => {
-              const currentStock = storeStock(product, selectedStore);
-              const totalStock = availableStock(product);
-              const inStock = currentStock > 0;
-              return (
-                <article
-                  key={product.id}
-                  className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
-                >
-                  <div className="grid aspect-[4/3] place-items-center bg-gradient-to-br from-emerald-50 to-amber-50">
-                    <div className="grid h-24 w-24 place-items-center rounded-lg bg-white text-3xl font-black text-emerald-800 shadow-sm">
-                      {product.image}
-                    </div>
+          <div className="reveal delay-2">
+            <div className="relative mx-auto max-w-sm rounded-[2rem] border border-slate-200 bg-slate-950 p-3 shadow-2xl">
+              <div className="rounded-[1.5rem] bg-[#f3f6ef] p-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs font-bold text-emerald-700">
+                      {t.orderSummary}
+                    </p>
+                    <p className="text-2xl font-black">{money(total || 9.8)}</p>
                   </div>
-                  <div className="space-y-3 p-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <p className="text-xs font-bold uppercase text-emerald-700">
-                          {product.category}
-                        </p>
-                        <h2 className="mt-1 min-h-12 text-lg font-black leading-6">
-                          {product.name}
-                        </h2>
-                      </div>
-                      <p className="rounded-md bg-slate-950 px-2.5 py-1 text-sm font-bold text-white">
-                        {money(product.price)}
-                      </p>
-                    </div>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="font-semibold text-slate-500">
-                        {t.stock}: {inStock ? currentStock : totalStock}
-                      </span>
-                      <span
-                        className={`rounded px-2 py-1 text-xs font-bold ${
-                          inStock
-                            ? "bg-emerald-50 text-emerald-700"
-                            : totalStock > 0
-                              ? "bg-amber-50 text-amber-700"
-                              : "bg-red-50 text-red-700"
-                        }`}
-                      >
-                        {inStock
-                          ? selectedStoreInfo.city
-                          : totalStock > 0
-                            ? "Other store"
-                            : t.out}
-                      </span>
-                    </div>
-                    <button
-                      type="button"
-                      disabled={!inStock}
-                      onClick={() => addToCart(product)}
-                      className="h-12 w-full rounded-md bg-emerald-800 font-bold text-white transition hover:bg-emerald-900 disabled:cursor-not-allowed disabled:bg-slate-300"
+                  <div className="rounded-full bg-emerald-800 px-3 py-2 text-xs font-black text-white">
+                    {cartQuantity || 3} {t.items}
+                  </div>
+                </div>
+                <div className="mt-4 space-y-3">
+                  {products.slice(0, 3).map((product, index) => (
+                    <div
+                      key={product.id}
+                      className="phone-card flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm"
+                      style={{ animationDelay: `${index * 120}ms` }}
                     >
-                      {inStock ? t.add : t.out}
-                    </button>
-                  </div>
-                </article>
-              );
-            })}
+                      <span className="grid h-12 w-12 place-items-center rounded-lg bg-emerald-50 font-black text-emerald-800">
+                        {product.image}
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block truncate text-sm font-black">
+                          {product.name}
+                        </span>
+                        <span className="text-xs font-semibold text-slate-500">
+                          {money(product.price)}
+                        </span>
+                      </span>
+                      <span className="text-xs font-black text-emerald-700">
+                        {t.open}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 rounded-xl bg-amber-50 p-3 text-xs font-bold text-amber-900">
+                  {t.onlineRule}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="shop" className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+        <div className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
+          <div className="grid gap-3 lg:grid-cols-[1fr_260px]">
+            <input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder={t.search}
+              className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 text-base font-semibold outline-none transition focus:border-emerald-700 focus:bg-white"
+            />
+            <select
+              value={selectedStore}
+              onChange={(event) => setSelectedStore(event.target.value as StoreId)}
+              className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-black outline-none transition focus:border-emerald-700 focus:bg-white"
+            >
+              {stores.map((store) => (
+                <option key={store.id} value={store.id}>
+                  {store.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
+            {categories.map((item) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => setCategory(item)}
+                className={`shrink-0 rounded-xl border px-4 py-3 text-sm font-black transition ${
+                  category === item
+                    ? "border-emerald-800 bg-emerald-800 text-white shadow-sm"
+                    : "border-slate-200 bg-white text-slate-700"
+                }`}
+              >
+                {item === "All" ? t.all : item}
+              </button>
+            ))}
           </div>
         </div>
 
-        <aside className="space-y-4 lg:sticky lg:top-4 lg:self-start">
-          <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-            <h2 className="text-2xl font-black">{t.cart}</h2>
-            <div className="mt-4 space-y-3">
-              {cartRows.length ? (
-                cartRows.map((item) => (
-                  <div
-                    key={item.productId}
-                    className="flex items-center justify-between gap-3 rounded-md bg-slate-50 p-3"
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {filteredProducts.map((product, index) => {
+            const currentStock = storeStock(product, selectedStore);
+            const totalStock = availableStock(product);
+            const inStock = currentStock > 0;
+            return (
+              <article
+                key={product.id}
+                className="product-card group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+                style={{ animationDelay: `${Math.min(index, 8) * 55}ms` }}
+              >
+                <div className="relative grid aspect-square place-items-center bg-[linear-gradient(135deg,#ecfdf5,#fff7ed)]">
+                  <span className="absolute left-3 top-3 rounded-full bg-white/85 px-2.5 py-1 text-[11px] font-black uppercase text-emerald-800 shadow-sm">
+                    {product.category}
+                  </span>
+                  <div className="grid h-24 w-24 place-items-center rounded-3xl bg-white text-4xl font-black text-emerald-800 shadow-lg transition group-hover:scale-105">
+                    {product.image}
+                  </div>
+                </div>
+                <div className="grid min-h-48 gap-3 p-3 sm:p-4">
+                  <div>
+                    <h2 className="line-clamp-2 min-h-12 text-base font-black leading-6">
+                      {product.name}
+                    </h2>
+                    <p className="mt-1 text-xs font-semibold text-slate-500">
+                      #{product.barcode}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-lg font-black">{money(product.price)}</p>
+                    <span
+                      className={`rounded-full px-2.5 py-1 text-[11px] font-black ${
+                        inStock
+                          ? "bg-emerald-50 text-emerald-700"
+                          : totalStock > 0
+                            ? "bg-amber-50 text-amber-700"
+                            : "bg-red-50 text-red-700"
+                      }`}
+                    >
+                      {inStock
+                        ? `${t.stock}: ${currentStock}`
+                        : totalStock > 0
+                          ? t.otherStore
+                          : t.out}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    disabled={!inStock}
+                    onClick={() => addToCart(product)}
+                    className="mt-auto h-12 rounded-xl bg-emerald-800 text-sm font-black text-white transition active:scale-[0.98] hover:bg-emerald-900 disabled:cursor-not-allowed disabled:bg-slate-300"
                   >
-                    <div>
-                      <p className="font-bold">{item.product.name}</p>
-                      <p className="text-sm text-slate-500">
+                    {inStock ? t.add : t.out}
+                  </button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section id="checkout" className="mx-auto grid max-w-7xl gap-5 px-4 pb-8 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
+          <h2 className="text-2xl font-black">{t.cart}</h2>
+          <div className="mt-4 space-y-3">
+            {cartRows.length ? (
+              cartRows.map((item) => (
+                <div
+                  key={item.productId}
+                  className="flex items-center justify-between gap-3 rounded-xl bg-slate-50 p-3"
+                >
+                  <div className="flex min-w-0 items-center gap-3">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-emerald-50 font-black text-emerald-800">
+                      {item.product.image}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="truncate font-black">{item.product.name}</p>
+                      <p className="text-sm font-semibold text-slate-500">
                         {item.quantity} x {money(item.product.price)}
                       </p>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => removeFromCart(item.productId)}
-                      className="rounded-md border border-slate-200 px-3 py-2 text-sm font-bold"
-                    >
-                      {t.remove}
-                    </button>
                   </div>
-                ))
-              ) : (
-                <p className="rounded-md bg-slate-50 p-4 text-sm text-slate-500">
-                  {t.empty}
-                </p>
-              )}
-            </div>
-            <div className="mt-4 flex items-center justify-between border-t border-slate-200 pt-4 text-xl font-black">
-              <span>{t.total}</span>
-              <span>{money(total)}</span>
-            </div>
+                  <button
+                    type="button"
+                    onClick={() => removeFromCart(item.productId)}
+                    className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-black"
+                  >
+                    {t.remove}
+                  </button>
+                </div>
+              ))
+            ) : (
+              <p className="rounded-xl bg-slate-50 p-4 text-sm font-semibold text-slate-500">
+                {t.empty}
+              </p>
+            )}
           </div>
+          <div className="mt-4 flex items-center justify-between border-t border-slate-200 pt-4 text-2xl font-black">
+            <span>{t.total}</span>
+            <span>{money(total)}</span>
+          </div>
+        </div>
 
-          <form
-            onSubmit={submitOrder}
-            className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm"
-          >
-            <h2 className="text-2xl font-black">{t.checkout}</h2>
-            <div className="mt-4 grid gap-3">
-              <input
-                required
-                value={customer.fullName}
-                onChange={(event) =>
-                  setCustomer({ ...customer, fullName: event.target.value })
-                }
-                placeholder={t.fullName}
-                className="h-12 rounded-md border border-slate-200 px-4 outline-none focus:border-emerald-700"
-              />
-              <input
-                required
-                value={customer.phone}
-                onChange={(event) =>
-                  setCustomer({ ...customer, phone: event.target.value })
-                }
-                placeholder={t.phone}
-                className="h-12 rounded-md border border-slate-200 px-4 outline-none focus:border-emerald-700"
-              />
-              <input
-                required
-                value={customer.city}
-                onChange={(event) =>
-                  setCustomer({ ...customer, city: event.target.value })
-                }
-                placeholder={t.city}
-                className="h-12 rounded-md border border-slate-200 px-4 outline-none focus:border-emerald-700"
-              />
-              <input
-                required
-                value={customer.address}
-                onChange={(event) =>
-                  setCustomer({ ...customer, address: event.target.value })
-                }
-                placeholder={t.address}
-                className="h-12 rounded-md border border-slate-200 px-4 outline-none focus:border-emerald-700"
-              />
-              <textarea
-                value={customer.notes}
-                onChange={(event) =>
-                  setCustomer({ ...customer, notes: event.target.value })
-                }
-                placeholder={t.notes}
-                className="min-h-20 rounded-md border border-slate-200 px-4 py-3 outline-none focus:border-emerald-700"
-              />
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setDeliveryType("delivery");
-                    if (paymentMethod === "store") setPaymentMethod("delivery");
-                  }}
-                  className={`rounded-md border px-3 py-3 text-sm font-bold ${
-                    deliveryType === "delivery"
-                      ? "border-emerald-800 bg-emerald-800 text-white"
-                      : "border-slate-200"
-                  }`}
-                >
-                  {t.delivery}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setDeliveryType("pickup")}
-                  className={`rounded-md border px-3 py-3 text-sm font-bold ${
-                    deliveryType === "pickup"
-                      ? "border-emerald-800 bg-emerald-800 text-white"
-                      : "border-slate-200"
-                  }`}
-                >
-                  {t.pickup}
-                </button>
-              </div>
-              <select
-                value={paymentMethod}
-                onChange={(event) =>
-                  setPaymentMethod(event.target.value as PaymentMethod)
-                }
-                className="h-12 rounded-md border border-slate-200 px-4 font-semibold outline-none focus:border-emerald-700"
-              >
-                <option value="delivery">{t.payDelivery}</option>
-                <option value="card">{t.payCard}</option>
-                {deliveryType === "pickup" ? (
-                  <option value="store">{t.payStore}</option>
-                ) : null}
-              </select>
-              <div className="rounded-md bg-amber-50 p-3 text-sm font-semibold text-amber-900">
-                {deliveryProcess}: {deliveryType === "delivery" ? t.feeLater : selectedStoreInfo.address}
-              </div>
-              {error ? (
-                <p className="rounded-md bg-red-50 p-3 text-sm font-bold text-red-700">
-                  {error}
-                </p>
-              ) : null}
-              <button
-                type="submit"
-                className="h-13 rounded-md bg-slate-950 px-4 py-4 text-base font-black text-white transition hover:bg-emerald-900"
-              >
-                {t.whatsapp}
-              </button>
-            </div>
-          </form>
-        </aside>
+        <form
+          onSubmit={submitOrder}
+          className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
+        >
+          <h2 className="text-2xl font-black">{t.checkout}</h2>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <input required value={customer.fullName} onChange={(event) => setCustomer({ ...customer, fullName: event.target.value })} placeholder={t.fullName} className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-semibold outline-none focus:border-emerald-700 focus:bg-white" />
+            <input required value={customer.phone} onChange={(event) => setCustomer({ ...customer, phone: event.target.value })} placeholder={t.phone} className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-semibold outline-none focus:border-emerald-700 focus:bg-white" />
+            <input required value={customer.city} onChange={(event) => setCustomer({ ...customer, city: event.target.value })} placeholder={t.city} className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-semibold outline-none focus:border-emerald-700 focus:bg-white" />
+            <input required value={customer.address} onChange={(event) => setCustomer({ ...customer, address: event.target.value })} placeholder={t.address} className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-semibold outline-none focus:border-emerald-700 focus:bg-white" />
+            <textarea value={customer.notes} onChange={(event) => setCustomer({ ...customer, notes: event.target.value })} placeholder={t.notes} className="min-h-24 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 font-semibold outline-none focus:border-emerald-700 focus:bg-white sm:col-span-2" />
+          </div>
+          <div className="mt-4 grid grid-cols-2 gap-2">
+            <button type="button" onClick={() => { setDeliveryType("delivery"); if (paymentMethod === "store") setPaymentMethod("delivery"); }} className={`rounded-xl border px-3 py-4 text-sm font-black transition ${deliveryType === "delivery" ? "border-emerald-800 bg-emerald-800 text-white" : "border-slate-200 bg-white"}`}>
+              {t.delivery}
+            </button>
+            <button type="button" onClick={() => setDeliveryType("pickup")} className={`rounded-xl border px-3 py-4 text-sm font-black transition ${deliveryType === "pickup" ? "border-emerald-800 bg-emerald-800 text-white" : "border-slate-200 bg-white"}`}>
+              {t.pickup}
+            </button>
+          </div>
+          <select value={paymentMethod} onChange={(event) => setPaymentMethod(event.target.value as PaymentMethod)} className="mt-3 h-14 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 font-black outline-none focus:border-emerald-700 focus:bg-white">
+            <option value="delivery">{t.payDelivery}</option>
+            <option value="card">{t.payCard}</option>
+            {deliveryType === "pickup" ? <option value="store">{t.payStore}</option> : null}
+          </select>
+          <div className="mt-3 rounded-xl bg-amber-50 p-3 text-sm font-bold text-amber-900">
+            {deliveryProcess}: {deliveryType === "delivery" ? t.feeLater : selectedStoreInfo.address}
+          </div>
+          {error ? (
+            <p className="mt-3 rounded-xl bg-red-50 p-3 text-sm font-black text-red-700">
+              {error}
+            </p>
+          ) : null}
+          <button type="submit" className="mt-4 h-14 w-full rounded-xl bg-slate-950 px-4 text-base font-black text-white transition active:scale-[0.99] hover:bg-emerald-900">
+            {t.whatsapp}
+          </button>
+        </form>
       </section>
+
+      {cartQuantity > 0 ? (
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-emerald-950/10 bg-white/95 p-3 shadow-2xl backdrop-blur lg:hidden">
+          <a
+            href="#checkout"
+            className="mx-auto flex max-w-md items-center justify-between rounded-xl bg-emerald-800 px-4 py-3 font-black text-white"
+          >
+            <span>
+              {cartQuantity} {t.items} · {money(total)}
+            </span>
+            <span>{t.checkout}</span>
+          </a>
+        </div>
+      ) : null}
     </main>
   );
 }
