@@ -39,9 +39,27 @@ Recommended structure:
 6. The POS app shows incoming online orders in an Online Orders tab.
 7. The cashier confirms, prepares, cancels, or marks the order as delivered/picked up.
 
+## Backend Sync Prototype
+
+This repo now includes a lightweight backend in `backend/`.
+
+```powershell
+cd backend
+npm run dev
+```
+
+To make the website read from the backend locally:
+
+```powershell
+$env:NEXT_PUBLIC_API_BASE_URL="http://localhost:4000"
+npm run dev
+```
+
+The POS posts product saves to `OLY_API_URL`, defaulting to `http://localhost:4000`.
+
 ## Next POS Changes Needed
 
-- Add product image path/file support to the Product model
+- Deploy the backend to a public production host
 - Add online visibility status per product
 - Add store online heartbeat/sync status
 - Add Online Orders tab

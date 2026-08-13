@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 
 type Language = "fr" | "en" | "ar";
 type DeliveryType = "delivery" | "pickup";
@@ -14,6 +14,7 @@ type Product = {
   category: string;
   price: number;
   image: string;
+  imageUrl?: string;
   barcode: string;
   stock: Record<StoreId, number>;
 };
@@ -63,6 +64,24 @@ const products: Product[] = [
   { id: "cigarettes", name: { fr: "Paquet cigarettes 20", en: "Cigarettes 20 Pack", ar: "علبة سجائر 20" }, category: "Tobacco", price: 10, image: "20", barcode: "619100029", stock: { bizerte: 35, tunis: 0 } },
   { id: "recharge-card", name: { fr: "Carte recharge 5 DT", en: "Phone Recharge Card 5 DT", ar: "بطاقة شحن 5 دنانير" }, category: "Services", price: 5, image: "5D", barcode: "619100030", stock: { bizerte: 50, tunis: 40 } },
 ];
+
+const productImages: Record<string, string> = {
+  "safia-water-15": "products/safia-water-15.webp",
+  "boga-cidre": "products/boga-cidre.jpg",
+  apla: "products/apla.jpg",
+  "saida-biscuits": "products/saida-biscuits.webp",
+  "maestro-chocolate": "products/maestro-chocolate.webp",
+  "chips-40g": "products/chips-40g.jpg",
+  "lilas-tissues": "products/lilas-tissues.webp",
+  "hand-sanitizer": "products/hand-sanitizer.jpg",
+  toothpaste: "products/toothpaste.jpg",
+  "baby-wipes": "products/baby-wipes.webp",
+  diapers: "products/diapers.jpg",
+  detergent: "products/detergent.png",
+  lighter: "products/lighter.jpg",
+  cigarettes: "products/cigarettes.jpg",
+  "recharge-card": "products/recharge-card.png",
+};
 
 const categoryLabels: Record<string, LocalizedText> = {
   Drinks: { fr: "Boissons", en: "Drinks", ar: "مشروبات" },
@@ -316,6 +335,10 @@ function categoryName(category: string, language: Language) {
   return categoryLabels[category]?.[language] ?? category;
 }
 
+function productImage(product: Product) {
+  return product.imageUrl ?? productImages[product.id] ?? "";
+}
+
 function orderTitle(language: Language) {
   if (language === "fr") return "Oly Drugstore - Commande en ligne";
   if (language === "ar") return "Oly Drugstore - طلب عبر الإنترنت";
@@ -345,6 +368,7 @@ function storeAccent(storeId: StoreId) {
 }
 
 export default function Home() {
+  const [catalogProducts, setCatalogProducts] = useState<Product[]>(products);
   const [language, setLanguage] = useState<Language>("fr");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
@@ -363,13 +387,35 @@ export default function Home() {
 
   const t = language === "ar" ? arabicCopy : copy[language];
   const accent = storeAccent(selectedStore);
+
+  useEffect(() => {
+    const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
+    if (!apiBase) return;
+
+    fetch(`${apiBase.replace(/\/$/, "")}/api/products`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Product API unavailable");
+        }
+        return response.json() as Promise<Product[]>;
+      })
+      .then((items) => {
+        if (Array.isArray(items) && items.length > 0) {
+          setCatalogProducts(items);
+        }
+      })
+      .catch(() => {
+        setCatalogProducts(products);
+      });
+  }, []);
+
   const categories = useMemo(
-    () => ["All", ...Array.from(new Set(products.map((item) => item.category)))],
-    [],
+    () => ["All", ...Array.from(new Set(catalogProducts.map((item) => item.category)))],
+    [catalogProducts],
   );
   const selectedStoreInfo = stores.find((store) => store.id === selectedStore)!;
   const normalizedQuery = query.trim().toLowerCase();
-  const filteredProducts = products.filter((product) => {
+  const filteredProducts = catalogProducts.filter((product) => {
     const matchesCategory = category === "All" || product.category === category;
     const productSearchText = [
       product.name.fr,
@@ -387,7 +433,7 @@ export default function Home() {
 
   const cartRows = cart
     .map((item) => {
-      const product = products.find((candidate) => candidate.id === item.productId);
+      const product = catalogProducts.find((candidate) => candidate.id === item.productId);
       return product ? { ...item, product } : null;
     })
     .filter(Boolean) as Array<CartItem & { product: Product }>;
@@ -593,17 +639,26 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-4 space-y-3">
-                  {products.slice(0, 3).map((product, index) => (
+                  {catalogProducts.slice(0, 3).map((product, index) => (
                     <div
                       key={product.id}
                       className="phone-card flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm"
                       style={{ animationDelay: `${index * 120}ms` }}
                     >
                       <span
-                        className="grid h-12 w-12 place-items-center rounded-lg font-black"
+                        className="grid h-12 w-12 place-items-center overflow-hidden rounded-lg font-black"
                         style={{ backgroundColor: accent.soft, color: accent.text }}
                       >
-                        {product.image}
+                        {productImage(product) ? (
+                          <img
+                            src={productImage(product)}
+                            alt={productName(product, language)}
+                            className="h-full w-full object-contain p-1"
+                            loading="lazy"
+                          />
+                        ) : (
+                          product.image
+                        )}
                       </span>
                       <span className="min-w-0 flex-1">
                         <span className="block truncate text-sm font-black">
@@ -695,10 +750,19 @@ export default function Home() {
                     {categoryName(product.category, language)}
                   </span>
                   <div
-                    className="grid h-24 w-24 place-items-center rounded-3xl bg-white text-4xl font-black shadow-lg transition group-hover:scale-105"
+                    className="grid h-28 w-28 place-items-center overflow-hidden rounded-3xl bg-white text-4xl font-black shadow-lg transition group-hover:scale-105"
                     style={{ color: accent.text }}
                   >
-                    {product.image}
+                    {productImage(product) ? (
+                      <img
+                        src={productImage(product)}
+                        alt={productName(product, language)}
+                        className="h-full w-full object-contain p-3"
+                        loading="lazy"
+                      />
+                    ) : (
+                      product.image
+                    )}
                   </div>
                 </div>
                 <div className="grid min-h-48 gap-3 p-3 sm:p-4">
@@ -755,10 +819,19 @@ export default function Home() {
                 >
                   <div className="flex min-w-0 items-center gap-3">
                     <span
-                      className="grid h-12 w-12 shrink-0 place-items-center rounded-lg font-black"
+                      className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-lg font-black"
                       style={{ backgroundColor: accent.soft, color: accent.text }}
                     >
-                      {item.product.image}
+                      {productImage(item.product) ? (
+                        <img
+                          src={productImage(item.product)}
+                          alt={productName(item.product, language)}
+                          className="h-full w-full object-contain p-1"
+                          loading="lazy"
+                        />
+                      ) : (
+                        item.product.image
+                      )}
                     </span>
                     <div className="min-w-0">
                       <p className="truncate font-black">{productName(item.product, language)}</p>
