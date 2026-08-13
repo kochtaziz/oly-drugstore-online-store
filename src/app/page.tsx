@@ -322,6 +322,28 @@ function orderTitle(language: Language) {
   return "Oly Drugstore - Online order";
 }
 
+function storeAccent(storeId: StoreId) {
+  if (storeId === "tunis") {
+    return {
+      color: "#7C3AED",
+      soft: "#F3E8FF",
+      text: "#5B21B6",
+      border: "#C4B5FD",
+      shadow: "rgba(124, 58, 237, 0.2)",
+      gradient: "linear-gradient(135deg,#f5f3ff,#ffffff)",
+    };
+  }
+
+  return {
+    color: "#FFD21F",
+    soft: "#FFF7CC",
+    text: "#7A4F00",
+    border: "#FACC15",
+    shadow: "rgba(255, 210, 31, 0.32)",
+    gradient: "linear-gradient(135deg,#fff7cc,#ffffff)",
+  };
+}
+
 export default function Home() {
   const [language, setLanguage] = useState<Language>("fr");
   const [query, setQuery] = useState("");
@@ -340,6 +362,7 @@ export default function Home() {
   });
 
   const t = language === "ar" ? arabicCopy : copy[language];
+  const accent = storeAccent(selectedStore);
   const categories = useMemo(
     () => ["All", ...Array.from(new Set(products.map((item) => item.category)))],
     [],
@@ -458,11 +481,11 @@ export default function Home() {
   }
 
   return (
-    <main dir={t.dir} className="min-h-screen bg-[#f3f6ef] pb-28 text-slate-950 lg:pb-0">
-      <header className="sticky top-0 z-30 border-b border-emerald-950/10 bg-white/90 backdrop-blur-xl">
+    <main dir={t.dir} className="min-h-screen bg-[#f7f7f4] pb-28 text-[#111111] lg:pb-0">
+      <header className="sticky top-0 z-30 border-b border-black/10 bg-white/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
           <a href="#welcome" className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-lg bg-emerald-800 text-lg font-black text-white shadow-sm">
+            <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#111111] text-lg font-black text-white shadow-sm">
               O
             </span>
             <span>
@@ -473,7 +496,14 @@ export default function Home() {
             </span>
           </a>
           <div className="flex items-center gap-2">
-            <div className="hidden rounded-full border border-emerald-900/10 bg-emerald-50 px-3 py-2 text-xs font-bold text-emerald-800 sm:block">
+            <div
+              className="hidden rounded-full border px-3 py-2 text-xs font-bold sm:block"
+              style={{
+                backgroundColor: accent.soft,
+                borderColor: accent.border,
+                color: accent.text,
+              }}
+            >
               {selectedStoreInfo.city} · {selectedStoreInfo.online ? t.open : t.closed}
             </div>
             <div className="flex rounded-lg border border-slate-200 bg-slate-50 p-1">
@@ -484,7 +514,7 @@ export default function Home() {
                   onClick={() => setLanguage(item)}
                   className={`rounded-md px-3 py-2 text-xs font-black transition ${
                     language === item
-                      ? "bg-emerald-800 text-white shadow-sm"
+                      ? "bg-[#111111] text-white shadow-sm"
                       : "text-slate-600"
                   }`}
                 >
@@ -499,7 +529,14 @@ export default function Home() {
       <section id="welcome" className="overflow-hidden bg-white">
         <div className="mx-auto grid min-h-[calc(100svh-65px)] max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:px-8">
           <div className="reveal">
-            <p className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-emerald-800">
+            <p
+              className="inline-flex rounded-full border px-4 py-2 text-xs font-black uppercase tracking-[0.2em]"
+              style={{
+                backgroundColor: accent.soft,
+                borderColor: accent.border,
+                color: accent.text,
+              }}
+            >
               {t.heroBadge}
             </p>
             <h1 className="mt-6 max-w-3xl text-5xl font-black leading-[0.95] tracking-tight text-slate-950 sm:text-7xl">
@@ -511,13 +548,14 @@ export default function Home() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#shop"
-                className="rounded-lg bg-emerald-800 px-6 py-4 text-center text-sm font-black text-white shadow-lg shadow-emerald-900/20 transition hover:-translate-y-0.5 hover:bg-emerald-900"
+                className="rounded-lg bg-[#111111] px-6 py-4 text-center text-sm font-black text-white shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-[#2a2a2a]"
+                style={{ boxShadow: `0 20px 35px ${accent.shadow}` }}
               >
                 {t.start}
               </a>
               <a
                 href="#checkout"
-                className="rounded-lg border border-slate-200 bg-white px-6 py-4 text-center text-sm font-black text-slate-800 transition hover:-translate-y-0.5 hover:border-emerald-300"
+                className="rounded-lg border border-slate-200 bg-white px-6 py-4 text-center text-sm font-black text-slate-800 transition hover:-translate-y-0.5 hover:border-[#111111]"
               >
                 {t.checkout}
               </a>
@@ -535,16 +573,22 @@ export default function Home() {
           </div>
 
           <div className="reveal delay-2">
-            <div className="relative mx-auto max-w-sm rounded-[2rem] border border-slate-200 bg-slate-950 p-3 shadow-2xl">
-              <div className="rounded-[1.5rem] bg-[#f3f6ef] p-4">
+            <div className="relative mx-auto max-w-sm rounded-[2rem] border border-slate-200 bg-[#111111] p-3 shadow-2xl">
+              <div className="rounded-[1.5rem] bg-[#f7f7f4] p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs font-bold text-emerald-700">
+                    <p className="text-xs font-bold" style={{ color: accent.text }}>
                       {t.orderSummary}
                     </p>
                     <p className="text-2xl font-black">{money(total || 9.8)}</p>
                   </div>
-                  <div className="rounded-full bg-emerald-800 px-3 py-2 text-xs font-black text-white">
+                  <div
+                    className="rounded-full px-3 py-2 text-xs font-black"
+                    style={{
+                      backgroundColor: accent.color,
+                      color: selectedStore === "bizerte" ? "#111111" : "#ffffff",
+                    }}
+                  >
                     {cartQuantity || 3} {t.items}
                   </div>
                 </div>
@@ -555,7 +599,10 @@ export default function Home() {
                       className="phone-card flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm"
                       style={{ animationDelay: `${index * 120}ms` }}
                     >
-                      <span className="grid h-12 w-12 place-items-center rounded-lg bg-emerald-50 font-black text-emerald-800">
+                      <span
+                        className="grid h-12 w-12 place-items-center rounded-lg font-black"
+                        style={{ backgroundColor: accent.soft, color: accent.text }}
+                      >
                         {product.image}
                       </span>
                       <span className="min-w-0 flex-1">
@@ -566,7 +613,7 @@ export default function Home() {
                           {money(product.price)}
                         </span>
                       </span>
-                      <span className="text-xs font-black text-emerald-700">
+                      <span className="text-xs font-black text-green-700">
                         {t.open}
                       </span>
                     </div>
@@ -588,12 +635,12 @@ export default function Home() {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder={t.search}
-              className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 text-base font-semibold outline-none transition focus:border-emerald-700 focus:bg-white"
+              className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 text-base font-semibold outline-none transition focus:border-[#111111] focus:bg-white"
             />
             <select
               value={selectedStore}
               onChange={(event) => setSelectedStore(event.target.value as StoreId)}
-              className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-black outline-none transition focus:border-emerald-700 focus:bg-white"
+              className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-black outline-none transition focus:border-[#111111] focus:bg-white"
             >
               {stores.map((store) => (
                 <option key={store.id} value={store.id}>
@@ -608,9 +655,18 @@ export default function Home() {
                 key={item}
                 type="button"
                 onClick={() => setCategory(item)}
+                style={
+                  category === item
+                    ? {
+                        backgroundColor: accent.color,
+                        borderColor: accent.border,
+                        color: selectedStore === "bizerte" ? "#111111" : "#ffffff",
+                      }
+                    : undefined
+                }
                 className={`shrink-0 rounded-xl border px-4 py-3 text-sm font-black transition ${
                   category === item
-                    ? "border-emerald-800 bg-emerald-800 text-white shadow-sm"
+                    ? "border-[#111111] bg-[#111111] text-white shadow-sm"
                     : "border-slate-200 bg-white text-slate-700"
                 }`}
               >
@@ -631,11 +687,17 @@ export default function Home() {
                 className="product-card group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                 style={{ animationDelay: `${Math.min(index, 8) * 55}ms` }}
               >
-                <div className="relative grid aspect-square place-items-center bg-[linear-gradient(135deg,#ecfdf5,#fff7ed)]">
-                  <span className="absolute left-3 top-3 rounded-full bg-white/85 px-2.5 py-1 text-[11px] font-black uppercase text-emerald-800 shadow-sm">
+                <div className="relative grid aspect-square place-items-center" style={{ background: accent.gradient }}>
+                  <span
+                    className="absolute left-3 top-3 rounded-full bg-white/85 px-2.5 py-1 text-[11px] font-black uppercase shadow-sm"
+                    style={{ color: accent.text }}
+                  >
                     {categoryName(product.category, language)}
                   </span>
-                  <div className="grid h-24 w-24 place-items-center rounded-3xl bg-white text-4xl font-black text-emerald-800 shadow-lg transition group-hover:scale-105">
+                  <div
+                    className="grid h-24 w-24 place-items-center rounded-3xl bg-white text-4xl font-black shadow-lg transition group-hover:scale-105"
+                    style={{ color: accent.text }}
+                  >
                     {product.image}
                   </div>
                 </div>
@@ -653,7 +715,7 @@ export default function Home() {
                     <span
                       className={`rounded-full px-2.5 py-1 text-[11px] font-black ${
                         inStock
-                          ? "bg-emerald-50 text-emerald-700"
+                          ? "bg-slate-100 text-green-700"
                           : totalStock > 0
                             ? "bg-amber-50 text-amber-700"
                             : "bg-red-50 text-red-700"
@@ -670,7 +732,7 @@ export default function Home() {
                     type="button"
                     disabled={!inStock}
                     onClick={() => addToCart(product)}
-                    className="mt-auto h-12 rounded-xl bg-emerald-800 text-sm font-black text-white transition active:scale-[0.98] hover:bg-emerald-900 disabled:cursor-not-allowed disabled:bg-slate-300"
+                    className="mt-auto h-12 rounded-xl bg-[#111111] text-sm font-black text-white transition active:scale-[0.98] hover:bg-[#2a2a2a] disabled:cursor-not-allowed disabled:bg-slate-300"
                   >
                     {inStock ? t.add : t.out}
                   </button>
@@ -692,7 +754,10 @@ export default function Home() {
                   className="flex items-center justify-between gap-3 rounded-xl bg-slate-50 p-3"
                 >
                   <div className="flex min-w-0 items-center gap-3">
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-emerald-50 font-black text-emerald-800">
+                    <span
+                      className="grid h-12 w-12 shrink-0 place-items-center rounded-lg font-black"
+                      style={{ backgroundColor: accent.soft, color: accent.text }}
+                    >
                       {item.product.image}
                     </span>
                     <div className="min-w-0">
@@ -729,21 +794,21 @@ export default function Home() {
         >
           <h2 className="text-2xl font-black">{t.checkout}</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            <input required value={customer.fullName} onChange={(event) => setCustomer({ ...customer, fullName: event.target.value })} placeholder={t.fullName} className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-semibold outline-none focus:border-emerald-700 focus:bg-white" />
-            <input required value={customer.phone} onChange={(event) => setCustomer({ ...customer, phone: event.target.value })} placeholder={t.phone} className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-semibold outline-none focus:border-emerald-700 focus:bg-white" />
-            <input required value={customer.city} onChange={(event) => setCustomer({ ...customer, city: event.target.value })} placeholder={t.city} className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-semibold outline-none focus:border-emerald-700 focus:bg-white" />
-            <input required value={customer.address} onChange={(event) => setCustomer({ ...customer, address: event.target.value })} placeholder={t.address} className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-semibold outline-none focus:border-emerald-700 focus:bg-white" />
-            <textarea value={customer.notes} onChange={(event) => setCustomer({ ...customer, notes: event.target.value })} placeholder={t.notes} className="min-h-24 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 font-semibold outline-none focus:border-emerald-700 focus:bg-white sm:col-span-2" />
+            <input required value={customer.fullName} onChange={(event) => setCustomer({ ...customer, fullName: event.target.value })} placeholder={t.fullName} className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-semibold outline-none focus:border-[#111111] focus:bg-white" />
+            <input required value={customer.phone} onChange={(event) => setCustomer({ ...customer, phone: event.target.value })} placeholder={t.phone} className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-semibold outline-none focus:border-[#111111] focus:bg-white" />
+            <input required value={customer.city} onChange={(event) => setCustomer({ ...customer, city: event.target.value })} placeholder={t.city} className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-semibold outline-none focus:border-[#111111] focus:bg-white" />
+            <input required value={customer.address} onChange={(event) => setCustomer({ ...customer, address: event.target.value })} placeholder={t.address} className="h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 font-semibold outline-none focus:border-[#111111] focus:bg-white" />
+            <textarea value={customer.notes} onChange={(event) => setCustomer({ ...customer, notes: event.target.value })} placeholder={t.notes} className="min-h-24 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 font-semibold outline-none focus:border-[#111111] focus:bg-white sm:col-span-2" />
           </div>
           <div className="mt-4 grid grid-cols-2 gap-2">
-            <button type="button" onClick={() => { setDeliveryType("delivery"); if (paymentMethod === "store") setPaymentMethod("delivery"); }} className={`rounded-xl border px-3 py-4 text-sm font-black transition ${deliveryType === "delivery" ? "border-emerald-800 bg-emerald-800 text-white" : "border-slate-200 bg-white"}`}>
+            <button type="button" onClick={() => { setDeliveryType("delivery"); if (paymentMethod === "store") setPaymentMethod("delivery"); }} className={`rounded-xl border px-3 py-4 text-sm font-black transition ${deliveryType === "delivery" ? "border-[#111111] bg-[#111111] text-white" : "border-slate-200 bg-white"}`}>
               {t.delivery}
             </button>
-            <button type="button" onClick={() => setDeliveryType("pickup")} className={`rounded-xl border px-3 py-4 text-sm font-black transition ${deliveryType === "pickup" ? "border-emerald-800 bg-emerald-800 text-white" : "border-slate-200 bg-white"}`}>
+            <button type="button" onClick={() => setDeliveryType("pickup")} className={`rounded-xl border px-3 py-4 text-sm font-black transition ${deliveryType === "pickup" ? "border-[#111111] bg-[#111111] text-white" : "border-slate-200 bg-white"}`}>
               {t.pickup}
             </button>
           </div>
-          <select value={paymentMethod} onChange={(event) => setPaymentMethod(event.target.value as PaymentMethod)} className="mt-3 h-14 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 font-black outline-none focus:border-emerald-700 focus:bg-white">
+          <select value={paymentMethod} onChange={(event) => setPaymentMethod(event.target.value as PaymentMethod)} className="mt-3 h-14 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 font-black outline-none focus:border-[#111111] focus:bg-white">
             <option value="delivery">{t.payDelivery}</option>
             <option value="card">{t.payCard}</option>
             {deliveryType === "pickup" ? <option value="store">{t.payStore}</option> : null}
@@ -756,17 +821,21 @@ export default function Home() {
               {error}
             </p>
           ) : null}
-          <button type="submit" className="mt-4 h-14 w-full rounded-xl bg-slate-950 px-4 text-base font-black text-white transition active:scale-[0.99] hover:bg-emerald-900">
+          <button type="submit" className="mt-4 h-14 w-full rounded-xl bg-[#111111] px-4 text-base font-black text-white transition active:scale-[0.99] hover:bg-[#2a2a2a]">
             {t.whatsapp}
           </button>
         </form>
       </section>
 
       {cartQuantity > 0 ? (
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-emerald-950/10 bg-white/95 p-3 shadow-2xl backdrop-blur lg:hidden">
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-black/10 bg-white/95 p-3 shadow-2xl backdrop-blur lg:hidden">
           <a
             href="#checkout"
-            className="mx-auto flex max-w-md items-center justify-between rounded-xl bg-emerald-800 px-4 py-3 font-black text-white"
+            className="mx-auto flex max-w-md items-center justify-between rounded-xl bg-[#111111] px-4 py-3 font-black text-white"
+            style={{
+              borderTop: `4px solid ${accent.color}`,
+              boxShadow: `0 -12px 30px ${accent.shadow}`,
+            }}
           >
             <span>
               {cartQuantity} {t.items} · {money(total)}
@@ -778,3 +847,4 @@ export default function Home() {
     </main>
   );
 }
+
