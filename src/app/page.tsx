@@ -238,6 +238,60 @@ const copy = {
   },
 } as const;
 
+const arabicCopy = {
+  dir: "rtl",
+  heroBadge: "طلبات إلكترونية مرتبطة بنظام البيع",
+  title: "Oly Drugstore",
+  subtitle:
+    "منتجات يومية مع مخزون حسب كل متجر، وخيارات استلام أو توصيل، وتأكيد الطلب عبر واتساب.",
+  welcome: "مرحبا بكم في Oly",
+  welcomeText:
+    "اختر المنتجات، أكد معلوماتك، ثم يقوم الكاشير بتحضير الطلب.",
+  start: "ابدأ الطلب",
+  browse: "عرض المنتجات",
+  fast: "توصيل محلي",
+  pickupCopy: "استلام من المتجر",
+  stockLive: "المخزون حسب المتجر",
+  search: "ابحث عن منتج أو رمز بار",
+  all: "الكل",
+  cart: "السلة",
+  checkout: "الطلب",
+  customer: "العميل",
+  fullName: "الاسم الكامل",
+  phone: "الهاتف",
+  city: "المدينة",
+  address: "العنوان",
+  notes: "ملاحظات",
+  deliveryType: "الطريقة",
+  delivery: "توصيل",
+  pickup: "استلام من المتجر",
+  payment: "الدفع",
+  payDelivery: "الدفع عند الاستلام",
+  payCard: "الدفع بالبطاقة (قريبا)",
+  payStore: "الدفع في المتجر",
+  store: "المتجر",
+  add: "أضف",
+  remove: "حذف",
+  total: "المجموع",
+  stock: "المخزون",
+  out: "غير متوفر",
+  open: "مفتوح",
+  closed: "مغلق",
+  sameCity: "توصيل محلي",
+  distance: "توصيل بين المدن",
+  feeLater: "يتم تحديد الرسوم من شركة التوصيل",
+  whatsapp: "إرسال عبر واتساب",
+  empty: "السلة فارغة.",
+  onlineRule:
+    "إذا كان نظام البيع في المتجر غير متصل، يظهر المتجر مغلقا على الموقع.",
+  imageNote:
+    "صور المنتجات مؤقتة في النسخة الأولى. في الإنتاج، تأتي من نظام البيع.",
+  required: "يرجى ملء كل البيانات المطلوبة قبل الإرسال.",
+  items: "منتجات",
+  otherStore: "متجر آخر",
+  orderSummary: "ملخص سريع",
+} as const;
+
 const whatsappPhone = "21658785649";
 
 function money(value: number) {
@@ -285,7 +339,7 @@ export default function Home() {
     notes: "",
   });
 
-  const t = copy[language];
+  const t = language === "ar" ? arabicCopy : copy[language];
   const categories = useMemo(
     () => ["All", ...Array.from(new Set(products.map((item) => item.category)))],
     [],
