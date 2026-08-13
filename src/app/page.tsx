@@ -6,10 +6,11 @@ type Language = "fr" | "en" | "ar";
 type DeliveryType = "delivery" | "pickup";
 type PaymentMethod = "delivery" | "card" | "store";
 type StoreId = "bizerte" | "tunis";
+type LocalizedText = Record<Language, string>;
 
 type Product = {
   id: string;
-  name: string;
+  name: LocalizedText;
   category: string;
   price: number;
   image: string;
@@ -46,22 +47,32 @@ const stores: Array<{
 ];
 
 const products: Product[] = [
-  { id: "safia-water-15", name: "Safia Water 1.5L", category: "Drinks", price: 1, image: "SA", barcode: "619100001", stock: { bizerte: 72, tunis: 48 } },
-  { id: "boga-cidre", name: "Boga Cidre 24cl", category: "Drinks", price: 1.6, image: "BO", barcode: "619100004", stock: { bizerte: 48, tunis: 30 } },
-  { id: "apla", name: "Apla 24cl", category: "Drinks", price: 1.5, image: "AP", barcode: "619100006", stock: { bizerte: 48, tunis: 30 } },
-  { id: "saida-biscuits", name: "Saida Biscuits", category: "Snacks", price: 0.9, image: "SB", barcode: "619100012", stock: { bizerte: 70, tunis: 50 } },
-  { id: "maestro-chocolate", name: "Maestro Chocolate Bar", category: "Snacks", price: 1.9, image: "MC", barcode: "619100014", stock: { bizerte: 45, tunis: 30 } },
-  { id: "chips-40g", name: "Chips 40g", category: "Snacks", price: 1.3, image: "CH", barcode: "619100015", stock: { bizerte: 60, tunis: 0 } },
-  { id: "lilas-tissues", name: "Lilas Tissues Pack", category: "Hygiene", price: 1.2, image: "LT", barcode: "619100017", stock: { bizerte: 80, tunis: 60 } },
-  { id: "hand-sanitizer", name: "Hand Sanitizer 100ml", category: "Hygiene", price: 3.5, image: "HS", barcode: "619100020", stock: { bizerte: 35, tunis: 24 } },
-  { id: "toothpaste", name: "Toothpaste 75ml", category: "Hygiene", price: 4.2, image: "TP", barcode: "619100022", stock: { bizerte: 32, tunis: 0 } },
-  { id: "baby-wipes", name: "Baby Wipes 72pcs", category: "Baby", price: 5.5, image: "BW", barcode: "619100024", stock: { bizerte: 24, tunis: 18 } },
-  { id: "diapers", name: "Peau Douce Diapers", category: "Baby", price: 22.5, image: "PD", barcode: "619100025", stock: { bizerte: 12, tunis: 0 } },
-  { id: "detergent", name: "Laundry Detergent 1kg", category: "Household", price: 6.5, image: "LD", barcode: "619100026", stock: { bizerte: 18, tunis: 0 } },
-  { id: "lighter", name: "Briquet Lighter", category: "Tobacco", price: 1, image: "BR", barcode: "619100028", stock: { bizerte: 80, tunis: 60 } },
-  { id: "cigarettes", name: "Cigarettes 20 Pack", category: "Tobacco", price: 10, image: "20", barcode: "619100029", stock: { bizerte: 35, tunis: 0 } },
-  { id: "recharge-card", name: "Phone Recharge Card 5 DT", category: "Services", price: 5, image: "5D", barcode: "619100030", stock: { bizerte: 50, tunis: 40 } },
+  { id: "safia-water-15", name: { fr: "Eau Safia 1.5L", en: "Safia Water 1.5L", ar: "ماء صافيا 1.5 لتر" }, category: "Drinks", price: 1, image: "SA", barcode: "619100001", stock: { bizerte: 72, tunis: 48 } },
+  { id: "boga-cidre", name: { fr: "Boga Cidre 24cl", en: "Boga Cidre 24cl", ar: "بوغا سيدر 24 صل" }, category: "Drinks", price: 1.6, image: "BO", barcode: "619100004", stock: { bizerte: 48, tunis: 30 } },
+  { id: "apla", name: { fr: "Apla 24cl", en: "Apla 24cl", ar: "أبلا 24 صل" }, category: "Drinks", price: 1.5, image: "AP", barcode: "619100006", stock: { bizerte: 48, tunis: 30 } },
+  { id: "saida-biscuits", name: { fr: "Biscuits Saida", en: "Saida Biscuits", ar: "بسكويت سعيدة" }, category: "Snacks", price: 0.9, image: "SB", barcode: "619100012", stock: { bizerte: 70, tunis: 50 } },
+  { id: "maestro-chocolate", name: { fr: "Chocolat Maestro", en: "Maestro Chocolate Bar", ar: "شوكولاتة مايسترو" }, category: "Snacks", price: 1.9, image: "MC", barcode: "619100014", stock: { bizerte: 45, tunis: 30 } },
+  { id: "chips-40g", name: { fr: "Chips 40g", en: "Chips 40g", ar: "شيبس 40غ" }, category: "Snacks", price: 1.3, image: "CH", barcode: "619100015", stock: { bizerte: 60, tunis: 0 } },
+  { id: "lilas-tissues", name: { fr: "Mouchoirs Lilas", en: "Lilas Tissues Pack", ar: "مناديل ليلاس" }, category: "Hygiene", price: 1.2, image: "LT", barcode: "619100017", stock: { bizerte: 80, tunis: 60 } },
+  { id: "hand-sanitizer", name: { fr: "Gel desinfectant 100ml", en: "Hand Sanitizer 100ml", ar: "معقم يدين 100 مل" }, category: "Hygiene", price: 3.5, image: "HS", barcode: "619100020", stock: { bizerte: 35, tunis: 24 } },
+  { id: "toothpaste", name: { fr: "Dentifrice 75ml", en: "Toothpaste 75ml", ar: "معجون أسنان 75 مل" }, category: "Hygiene", price: 4.2, image: "TP", barcode: "619100022", stock: { bizerte: 32, tunis: 0 } },
+  { id: "baby-wipes", name: { fr: "Lingettes bebe 72pcs", en: "Baby Wipes 72pcs", ar: "مناديل أطفال 72 قطعة" }, category: "Baby", price: 5.5, image: "BW", barcode: "619100024", stock: { bizerte: 24, tunis: 18 } },
+  { id: "diapers", name: { fr: "Couches Peau Douce", en: "Peau Douce Diapers", ar: "حفاضات بو دوس" }, category: "Baby", price: 22.5, image: "PD", barcode: "619100025", stock: { bizerte: 12, tunis: 0 } },
+  { id: "detergent", name: { fr: "Lessive 1kg", en: "Laundry Detergent 1kg", ar: "مسحوق غسيل 1 كغ" }, category: "Household", price: 6.5, image: "LD", barcode: "619100026", stock: { bizerte: 18, tunis: 0 } },
+  { id: "lighter", name: { fr: "Briquet", en: "Lighter", ar: "ولاعة" }, category: "Tobacco", price: 1, image: "BR", barcode: "619100028", stock: { bizerte: 80, tunis: 60 } },
+  { id: "cigarettes", name: { fr: "Paquet cigarettes 20", en: "Cigarettes 20 Pack", ar: "علبة سجائر 20" }, category: "Tobacco", price: 10, image: "20", barcode: "619100029", stock: { bizerte: 35, tunis: 0 } },
+  { id: "recharge-card", name: { fr: "Carte recharge 5 DT", en: "Phone Recharge Card 5 DT", ar: "بطاقة شحن 5 دنانير" }, category: "Services", price: 5, image: "5D", barcode: "619100030", stock: { bizerte: 50, tunis: 40 } },
 ];
+
+const categoryLabels: Record<string, LocalizedText> = {
+  Drinks: { fr: "Boissons", en: "Drinks", ar: "مشروبات" },
+  Snacks: { fr: "Snacks", en: "Snacks", ar: "مأكولات خفيفة" },
+  Hygiene: { fr: "Hygiene", en: "Hygiene", ar: "النظافة" },
+  Baby: { fr: "Bebe", en: "Baby", ar: "الأطفال" },
+  Household: { fr: "Maison", en: "Household", ar: "المنزل" },
+  Tobacco: { fr: "Tabac", en: "Tobacco", ar: "التبغ" },
+  Services: { fr: "Services", en: "Services", ar: "خدمات" },
+};
 
 const copy = {
   fr: {
@@ -93,7 +104,7 @@ const copy = {
     pickup: "Retrait magasin",
     payment: "Paiement",
     payDelivery: "Paiement a la livraison",
-    payCard: "Carte bancaire (placeholder)",
+    payCard: "Carte bancaire (bientot disponible)",
     payStore: "Paiement en magasin",
     store: "Magasin",
     add: "Ajouter",
@@ -116,6 +127,7 @@ const copy = {
     items: "articles",
     otherStore: "Autre magasin",
     orderSummary: "Resume rapide",
+    orderTitle: "Oly Drugstore - Commande en ligne",
   },
   en: {
     dir: "ltr",
@@ -146,7 +158,7 @@ const copy = {
     pickup: "Store pickup",
     payment: "Payment",
     payDelivery: "Pay on delivery",
-    payCard: "Card payment (placeholder)",
+    payCard: "Card payment (coming soon)",
     payStore: "Pay in store",
     store: "Store",
     add: "Add",
@@ -169,6 +181,7 @@ const copy = {
     items: "items",
     otherStore: "Other store",
     orderSummary: "Quick summary",
+    orderTitle: "Oly Drugstore - Online order",
   },
   ar: {
     dir: "rtl",
@@ -241,6 +254,20 @@ function storeStock(product: Product, storeId: StoreId) {
   return product.stock[storeId];
 }
 
+function productName(product: Product, language: Language) {
+  return product.name[language] ?? product.name.fr;
+}
+
+function categoryName(category: string, language: Language) {
+  return categoryLabels[category]?.[language] ?? category;
+}
+
+function orderTitle(language: Language) {
+  if (language === "fr") return "Oly Drugstore - Commande en ligne";
+  if (language === "ar") return "Oly Drugstore - طلب عبر الإنترنت";
+  return "Oly Drugstore - Online order";
+}
+
 export default function Home() {
   const [language, setLanguage] = useState<Language>("fr");
   const [query, setQuery] = useState("");
@@ -267,10 +294,17 @@ export default function Home() {
   const normalizedQuery = query.trim().toLowerCase();
   const filteredProducts = products.filter((product) => {
     const matchesCategory = category === "All" || product.category === category;
+    const productSearchText = [
+      product.name.fr,
+      product.name.en,
+      product.name.ar,
+      product.barcode,
+    ]
+      .join(" ")
+      .toLowerCase();
     const matchesSearch =
       !normalizedQuery ||
-      product.name.toLowerCase().includes(normalizedQuery) ||
-      product.barcode.includes(normalizedQuery);
+      productSearchText.includes(normalizedQuery);
     return matchesCategory && matchesSearch;
   });
 
@@ -343,7 +377,7 @@ export default function Home() {
           ? t.payCard
           : t.payStore;
     const lines = [
-      "Oly Drugstore - Online order",
+      orderTitle(language),
       `${t.customer}: ${customer.fullName}`,
       `${t.phone}: ${customer.phone}`,
       `${t.city}: ${customer.city}`,
@@ -355,7 +389,7 @@ export default function Home() {
       `${t.cart}:`,
       ...cartRows.map(
         (item) =>
-          `- ${item.product.name} x${item.quantity} = ${money(
+          `- ${productName(item.product, language)} x${item.quantity} = ${money(
             item.product.price * item.quantity,
           )}`,
       ),
@@ -472,7 +506,7 @@ export default function Home() {
                       </span>
                       <span className="min-w-0 flex-1">
                         <span className="block truncate text-sm font-black">
-                          {product.name}
+                          {productName(product, language)}
                         </span>
                         <span className="text-xs font-semibold text-slate-500">
                           {money(product.price)}
@@ -526,7 +560,7 @@ export default function Home() {
                     : "border-slate-200 bg-white text-slate-700"
                 }`}
               >
-                {item === "All" ? t.all : item}
+                {item === "All" ? t.all : categoryName(item, language)}
               </button>
             ))}
           </div>
@@ -545,7 +579,7 @@ export default function Home() {
               >
                 <div className="relative grid aspect-square place-items-center bg-[linear-gradient(135deg,#ecfdf5,#fff7ed)]">
                   <span className="absolute left-3 top-3 rounded-full bg-white/85 px-2.5 py-1 text-[11px] font-black uppercase text-emerald-800 shadow-sm">
-                    {product.category}
+                    {categoryName(product.category, language)}
                   </span>
                   <div className="grid h-24 w-24 place-items-center rounded-3xl bg-white text-4xl font-black text-emerald-800 shadow-lg transition group-hover:scale-105">
                     {product.image}
@@ -554,7 +588,7 @@ export default function Home() {
                 <div className="grid min-h-48 gap-3 p-3 sm:p-4">
                   <div>
                     <h2 className="line-clamp-2 min-h-12 text-base font-black leading-6">
-                      {product.name}
+                      {productName(product, language)}
                     </h2>
                     <p className="mt-1 text-xs font-semibold text-slate-500">
                       #{product.barcode}
@@ -608,7 +642,7 @@ export default function Home() {
                       {item.product.image}
                     </span>
                     <div className="min-w-0">
-                      <p className="truncate font-black">{item.product.name}</p>
+                      <p className="truncate font-black">{productName(item.product, language)}</p>
                       <p className="text-sm font-semibold text-slate-500">
                         {item.quantity} x {money(item.product.price)}
                       </p>
