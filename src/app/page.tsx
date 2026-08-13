@@ -6,6 +6,8 @@ type Language = "fr" | "en" | "ar";
 type DeliveryType = "delivery" | "pickup";
 type PaymentMethod = "delivery" | "card" | "store";
 type StoreId = "bizerte" | "tunis";
+type AvailabilityFilter = "all" | "selected" | "any";
+type SortMode = "featured" | "price-asc" | "price-desc" | "stock-desc";
 type LocalizedText = Record<Language, string>;
 
 type Product = {
@@ -202,6 +204,22 @@ const copy = {
     otherStore: "Autre magasin",
     orderSummary: "Resume rapide",
     orderTitle: "Oly Drugstore - Commande en ligne",
+    filters: "Filtres",
+    availability: "Disponibilite",
+    inSelectedStore: "Disponible magasin choisi",
+    inAnyStore: "Disponible tous magasins",
+    sort: "Tri",
+    featured: "Mis en avant",
+    priceLow: "Prix croissant",
+    priceHigh: "Prix decroissant",
+    stockHigh: "Stock eleve",
+    policies: "Politiques",
+    privacy: "Confidentialite",
+    deliveryPolicy: "Livraison",
+    refundPolicy: "Retours",
+    ageNotice: "Age legal",
+    orderSaved: "Commande enregistree dans le systeme.",
+    orderFallback: "WhatsApp est ouvert. Si le serveur est indisponible, la commande sera confirmee manuellement.",
   },
   en: {
     dir: "ltr",
@@ -256,6 +274,22 @@ const copy = {
     otherStore: "Other store",
     orderSummary: "Quick summary",
     orderTitle: "Oly Drugstore - Online order",
+    filters: "Filters",
+    availability: "Availability",
+    inSelectedStore: "Available in selected store",
+    inAnyStore: "Available in any store",
+    sort: "Sort",
+    featured: "Featured",
+    priceLow: "Price low to high",
+    priceHigh: "Price high to low",
+    stockHigh: "Highest stock",
+    policies: "Policies",
+    privacy: "Privacy",
+    deliveryPolicy: "Delivery",
+    refundPolicy: "Returns",
+    ageNotice: "Legal age",
+    orderSaved: "Order saved in the system.",
+    orderFallback: "WhatsApp is open. If the server is unavailable, the order can be confirmed manually.",
   },
   ar: {
     dir: "rtl",
@@ -368,6 +402,77 @@ const arabicCopy = {
 
 const whatsappPhone = "21658785649";
 
+const cleanArabicCopy = {
+  dir: "rtl",
+  heroBadge: "طلبات إلكترونية مرتبطة بنظام البيع",
+  title: "Oly Drugstore",
+  subtitle:
+    "منتجات يومية مع مخزون حسب كل متجر، وخيارات استلام أو توصيل، وتأكيد الطلب عبر واتساب.",
+  welcome: "مرحبا بكم في Oly",
+  welcomeText:
+    "اختر المنتجات، أكد معلوماتك، ثم يقوم الكاشير بتحضير الطلب.",
+  start: "ابدأ الطلب",
+  browse: "عرض المنتجات",
+  fast: "توصيل محلي",
+  pickupCopy: "استلام من المتجر",
+  stockLive: "المخزون حسب المتجر",
+  search: "ابحث عن منتج أو رمز بار",
+  all: "الكل",
+  cart: "السلة",
+  checkout: "الطلب",
+  customer: "العميل",
+  fullName: "الاسم الكامل",
+  phone: "الهاتف",
+  city: "المدينة",
+  address: "العنوان",
+  notes: "ملاحظات",
+  deliveryType: "الطريقة",
+  delivery: "توصيل",
+  pickup: "استلام من المتجر",
+  payment: "الدفع",
+  payDelivery: "الدفع عند الاستلام",
+  payCard: "الدفع بالبطاقة (قريبا)",
+  payStore: "الدفع في المتجر",
+  store: "المتجر",
+  add: "أضف",
+  remove: "حذف",
+  total: "المجموع",
+  stock: "المخزون",
+  out: "غير متوفر",
+  open: "مفتوح",
+  closed: "مغلق",
+  sameCity: "توصيل محلي",
+  distance: "توصيل بين المدن",
+  feeLater: "يتم تحديد الرسوم من شركة التوصيل",
+  whatsapp: "إرسال عبر واتساب",
+  empty: "السلة فارغة.",
+  onlineRule:
+    "إذا كان نظام البيع في المتجر غير متصل، يظهر المتجر مغلقا على الموقع.",
+  imageNote:
+    "يمكن تغيير صور المنتجات لاحقا من نظام البيع.",
+  required: "يرجى ملء كل البيانات المطلوبة قبل الإرسال.",
+  items: "منتجات",
+  otherStore: "متجر آخر",
+  orderSummary: "ملخص سريع",
+  orderTitle: "Oly Drugstore - طلب عبر الإنترنت",
+  filters: "الفلاتر",
+  availability: "التوفر",
+  inSelectedStore: "متوفر في المتجر المختار",
+  inAnyStore: "متوفر في أي متجر",
+  sort: "الترتيب",
+  featured: "مميز",
+  priceLow: "الأرخص",
+  priceHigh: "الأغلى",
+  stockHigh: "الأكثر توفر",
+  policies: "السياسات",
+  privacy: "الخصوصية",
+  deliveryPolicy: "التوصيل",
+  refundPolicy: "الاسترجاع",
+  ageNotice: "تأكيد السن",
+  orderSaved: "تم تسجيل الطلب في النظام.",
+  orderFallback: "تم فتح واتساب. إذا لم يكن الخادم متصلا، يتم تأكيد الطلب يدويا.",
+} as const;
+
 function money(value: number) {
   return `${value.toFixed(3)} DT`;
 }
@@ -383,7 +488,9 @@ function storeStock(product: Product, storeId: StoreId) {
 }
 
 function productName(product: Product, language: Language) {
-  return product.name[language] ?? product.name.fr;
+  const value = product.name[language] ?? product.name.fr;
+  if (language === "ar" && /[ØÙ]/.test(value)) return product.name.fr;
+  return value;
 }
 
 function categoryName(category: string, language: Language) {
@@ -391,7 +498,14 @@ function categoryName(category: string, language: Language) {
 }
 
 function productImage(product: Product) {
-  return product.imageUrl ?? productImages[product.id] ?? `products/${product.id}.jpg`;
+  if (product.imageUrl) {
+    if (product.imageUrl.startsWith("/")) {
+      const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
+      return apiBase ? `${apiBase.replace(/\/$/, "")}${product.imageUrl}` : product.imageUrl;
+    }
+    return product.imageUrl;
+  }
+  return productImages[product.id] ?? `products/${product.id}.jpg`;
 }
 
 function orderTitle(language: Language) {
@@ -427,11 +541,14 @@ export default function Home() {
   const [language, setLanguage] = useState<Language>("fr");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
+  const [availability, setAvailability] = useState<AvailabilityFilter>("all");
+  const [sortMode, setSortMode] = useState<SortMode>("featured");
   const [selectedStore, setSelectedStore] = useState<StoreId>("bizerte");
   const [deliveryType, setDeliveryType] = useState<DeliveryType>("delivery");
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("delivery");
   const [cart, setCart] = useState<CartItem[]>([]);
   const [error, setError] = useState("");
+  const [orderStatus, setOrderStatus] = useState("");
   const [customer, setCustomer] = useState({
     fullName: "",
     phone: "",
@@ -440,7 +557,7 @@ export default function Home() {
     notes: "",
   });
 
-  const t = language === "ar" ? arabicCopy : copy[language];
+  const t = language === "ar" ? cleanArabicCopy : copy[language as Exclude<Language, "ar">];
   const accent = storeAccent(selectedStore);
 
   useEffect(() => {
@@ -470,21 +587,34 @@ export default function Home() {
   );
   const selectedStoreInfo = stores.find((store) => store.id === selectedStore)!;
   const normalizedQuery = query.trim().toLowerCase();
-  const filteredProducts = catalogProducts.filter((product) => {
-    const matchesCategory = category === "All" || product.category === category;
-    const productSearchText = [
-      product.name.fr,
-      product.name.en,
-      product.name.ar,
-      product.barcode,
-    ]
-      .join(" ")
-      .toLowerCase();
-    const matchesSearch =
-      !normalizedQuery ||
-      productSearchText.includes(normalizedQuery);
-    return matchesCategory && matchesSearch;
-  });
+  const filteredProducts = catalogProducts
+    .filter((product) => {
+      const matchesCategory = category === "All" || product.category === category;
+      const productSearchText = [
+        product.name.fr,
+        product.name.en,
+        product.name.ar,
+        product.barcode,
+      ]
+        .join(" ")
+        .toLowerCase();
+      const matchesSearch =
+        !normalizedQuery ||
+        productSearchText.includes(normalizedQuery);
+      const selectedStock = storeStock(product, selectedStore);
+      const totalStock = availableStock(product);
+      const matchesAvailability =
+        availability === "all" ||
+        (availability === "selected" && selectedStock > 0) ||
+        (availability === "any" && totalStock > 0);
+      return matchesCategory && matchesSearch && matchesAvailability;
+    })
+    .sort((a, b) => {
+      if (sortMode === "price-asc") return a.price - b.price;
+      if (sortMode === "price-desc") return b.price - a.price;
+      if (sortMode === "stock-desc") return availableStock(b) - availableStock(a);
+      return 0;
+    });
 
   const cartRows = cart
     .map((item) => {
@@ -536,8 +666,9 @@ export default function Home() {
     );
   }
 
-  function submitOrder(event: FormEvent<HTMLFormElement>) {
+  async function submitOrder(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setOrderStatus("");
     if (
       !customer.fullName ||
       !customer.phone ||
@@ -548,6 +679,7 @@ export default function Home() {
       setError(t.required);
       return;
     }
+    setError("");
     const paymentText =
       paymentMethod === "delivery"
         ? t.payDelivery
@@ -575,6 +707,42 @@ export default function Home() {
       `${t.total}: ${money(total)}`,
       `${t.notes}: ${customer.notes || "-"}`,
     ];
+    const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
+    if (apiBase) {
+      try {
+        const response = await fetch(`${apiBase.replace(/\/$/, "")}/api/orders`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            storeId: selectedStore,
+            storeName: selectedStoreInfo.name,
+            customer,
+            deliveryType,
+            deliveryProcess,
+            paymentMethod,
+            paymentText,
+            total,
+            items: cartRows.map((item) => ({
+              productId: item.product.id,
+              barcode: item.product.barcode,
+              name: productName(item.product, language),
+              quantity: item.quantity,
+              unitPrice: item.product.price,
+              lineTotal: item.product.price * item.quantity,
+            })),
+            notes: customer.notes,
+          }),
+        });
+        if (!response.ok) {
+          throw new Error("Order API unavailable");
+        }
+        setOrderStatus(t.orderSaved);
+      } catch {
+        setOrderStatus(t.orderFallback);
+      }
+    } else {
+      setOrderStatus(t.orderFallback);
+    }
     const url = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(
       lines.join("\n"),
     )}`;
@@ -784,6 +952,33 @@ export default function Home() {
               </button>
             ))}
           </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <label className="grid gap-1 text-xs font-black uppercase text-slate-500">
+              {t.availability}
+              <select
+                value={availability}
+                onChange={(event) => setAvailability(event.target.value as AvailabilityFilter)}
+                className="h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-black text-slate-900 outline-none transition focus:border-[#111111] focus:bg-white"
+              >
+                <option value="all">{t.all}</option>
+                <option value="selected">{t.inSelectedStore}</option>
+                <option value="any">{t.inAnyStore}</option>
+              </select>
+            </label>
+            <label className="grid gap-1 text-xs font-black uppercase text-slate-500">
+              {t.sort}
+              <select
+                value={sortMode}
+                onChange={(event) => setSortMode(event.target.value as SortMode)}
+                className="h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-black text-slate-900 outline-none transition focus:border-[#111111] focus:bg-white"
+              >
+                <option value="featured">{t.featured}</option>
+                <option value="price-asc">{t.priceLow}</option>
+                <option value="price-desc">{t.priceHigh}</option>
+                <option value="stock-desc">{t.stockHigh}</option>
+              </select>
+            </label>
+          </div>
         </div>
 
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -949,10 +1144,60 @@ export default function Home() {
               {error}
             </p>
           ) : null}
+          {orderStatus ? (
+            <p className="mt-3 rounded-xl bg-green-50 p-3 text-sm font-black text-green-800">
+              {orderStatus}
+            </p>
+          ) : null}
           <button type="submit" className="mt-4 h-14 w-full rounded-xl bg-[#111111] px-4 text-base font-black text-white transition active:scale-[0.99] hover:bg-[#2a2a2a]">
             {t.whatsapp}
           </button>
         </form>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
+        <div className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            {
+              title: t.deliveryPolicy,
+              body: `${t.sameCity}: ${selectedStoreInfo.city}. ${t.distance}: ${t.feeLater}.`,
+            },
+            {
+              title: t.refundPolicy,
+              body:
+                language === "fr"
+                  ? "Les retours sont confirmes par le magasin selon l'etat du produit et le ticket."
+                  : language === "ar"
+                    ? "يتم تأكيد الاسترجاع من طرف المتجر حسب حالة المنتج والتذكرة."
+                    : "Returns are confirmed by the store depending on product condition and receipt.",
+            },
+            {
+              title: t.privacy,
+              body:
+                language === "fr"
+                  ? "Les donnees client servent uniquement a preparer, livrer et suivre la commande."
+                  : language === "ar"
+                    ? "تستخدم بيانات العميل فقط لتحضير الطلب وتوصيله ومتابعته."
+                    : "Customer data is used only to prepare, deliver, and follow up the order.",
+            },
+            {
+              title: t.ageNotice,
+              body:
+                language === "fr"
+                  ? "Les articles limites par l'age sont remis uniquement apres verification en magasin ou livraison."
+                  : language === "ar"
+                    ? "المنتجات المحددة بالسن تسلم فقط بعد التحقق عند الاستلام أو في المتجر."
+                    : "Age-limited items are handed over only after verification at pickup or delivery.",
+            },
+          ].map((item) => (
+            <article key={item.title} className="rounded-xl bg-slate-50 p-4">
+              <h2 className="text-sm font-black">{item.title}</h2>
+              <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
+                {item.body}
+              </p>
+            </article>
+          ))}
+        </div>
       </section>
 
       {cartQuantity > 0 ? (

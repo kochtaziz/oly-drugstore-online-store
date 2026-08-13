@@ -32,6 +32,20 @@ The POS syncs product saves to:
 http://localhost:4000/api/products
 ```
 
+The POS can also pull online orders from:
+
+```text
+http://localhost:4000/api/orders.csv?storeId=STORE-1
+```
+
+When a POS product has a local image selected, the POS can upload it to:
+
+```text
+/uploads/products
+```
+
+The storefront can display those images through `NEXT_PUBLIC_API_BASE_URL`.
+
 Change the API target with:
 
 ```powershell
@@ -46,6 +60,11 @@ If the API is offline, the POS still saves products locally.
 GET  /api/health
 GET  /api/products
 POST /api/products
+GET  /api/orders
+GET  /api/orders.csv?storeId=STORE-1
+POST /api/orders
+POST /api/orders/status
 ```
 
 For a public production API, set `OLY_API_KEY` on both the API server and the POS machine.
+For production, replace the JSON files with a managed database or host this backend on a small server with persistent storage.
