@@ -1,6 +1,6 @@
 # Product Image Sources
 
-These images are temporary storefront assets for the current demo catalog. Replace them with original store-owned photos from the POS when available.
+These images are storefront assets for the current demo catalog. Replace them with original store-owned photos from the POS when available.
 
 - `safia-water-15.webp`: Carrefour Tunisia product image
 - `boga-cidre.jpg`: Tunimart product image
@@ -17,3 +17,7 @@ These images are temporary storefront assets for the current demo catalog. Repla
 - `lighter.jpg`: Mi Tienda Nube product image
 - `cigarettes.jpg`: Wellpaperbox product image
 - `recharge-card.png`: Hencha Ville blog product-style image
+
+Additional food product photos were sourced from Open Food Facts where available. Open Food Facts product images are provided by contributors and are generally available under Creative Commons Attribution-ShareAlike terms.
+
+For products without a reliable reusable photo source, the demo uses locally generated Oly Select packshot cards with the correct product name, category, and price. These are placeholders designed to keep the storefront polished until the store uploads its own POS product photos.

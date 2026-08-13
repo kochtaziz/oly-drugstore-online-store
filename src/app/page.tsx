@@ -391,7 +391,7 @@ function categoryName(category: string, language: Language) {
 }
 
 function productImage(product: Product) {
-  return product.imageUrl ?? productImages[product.id] ?? "";
+  return product.imageUrl ?? productImages[product.id] ?? `products/${product.id}.jpg`;
 }
 
 function orderTitle(language: Language) {
@@ -583,7 +583,7 @@ export default function Home() {
 
   return (
     <main dir={t.dir} className="min-h-screen bg-[#f7f7f4] pb-28 text-[#111111] lg:pb-0">
-      <header className="sticky top-0 z-30 border-b border-black/10 bg-white/90 backdrop-blur-xl">
+      <header className="sticky top-0 z-30 border-b border-black/10 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
           <a href="#welcome" className="flex items-center gap-3">
             <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#111111] text-lg font-black text-white shadow-sm">
@@ -627,7 +627,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section id="welcome" className="overflow-hidden bg-white">
+      <section id="welcome" className="hero-surface overflow-hidden bg-white">
         <div className="mx-auto grid min-h-[calc(100svh-65px)] max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:px-8">
           <div className="reveal">
             <p
@@ -649,7 +649,7 @@ export default function Home() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#shop"
-                className="rounded-lg bg-[#111111] px-6 py-4 text-center text-sm font-black text-white shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-[#2a2a2a]"
+                className="primary-action rounded-lg bg-[#111111] px-6 py-4 text-center text-sm font-black text-white shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-[#2a2a2a]"
                 style={{ boxShadow: `0 20px 35px ${accent.shadow}` }}
               >
                 {t.start}
@@ -739,7 +739,7 @@ export default function Home() {
       </section>
 
       <section id="shop" className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
+        <div className="catalog-shell rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
           <div className="grid gap-3 lg:grid-cols-[1fr_260px]">
             <input
               value={query}
@@ -774,7 +774,7 @@ export default function Home() {
                       }
                     : undefined
                 }
-                className={`shrink-0 rounded-xl border px-4 py-3 text-sm font-black transition ${
+                className={`category-chip shrink-0 rounded-xl border px-4 py-3 text-sm font-black transition ${
                   category === item
                     ? "border-[#111111] bg-[#111111] text-white shadow-sm"
                     : "border-slate-200 bg-white text-slate-700"
@@ -786,7 +786,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredProducts.map((product, index) => {
             const currentStock = storeStock(product, selectedStore);
             const totalStock = availableStock(product);
@@ -797,22 +797,22 @@ export default function Home() {
                 className="product-card group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                 style={{ animationDelay: `${Math.min(index, 8) * 55}ms` }}
               >
-                <div className="relative grid aspect-square place-items-center" style={{ background: accent.gradient }}>
+                <div className="product-photo relative grid aspect-[1.08] place-items-center" style={{ background: accent.gradient }}>
                   <span
-                    className="absolute left-3 top-3 rounded-full bg-white/85 px-2.5 py-1 text-[11px] font-black uppercase shadow-sm"
+                    className="absolute left-3 top-3 z-10 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-black uppercase shadow-sm backdrop-blur"
                     style={{ color: accent.text }}
                   >
                     {categoryName(product.category, language)}
                   </span>
                   <div
-                    className="grid h-28 w-28 place-items-center overflow-hidden rounded-3xl bg-white text-4xl font-black shadow-lg transition group-hover:scale-105"
+                    className="grid h-full w-full place-items-center overflow-hidden text-4xl font-black transition duration-500 group-hover:scale-[1.04]"
                     style={{ color: accent.text }}
                   >
                     {productImage(product) ? (
                       <img
                         src={productImage(product)}
                         alt={productName(product, language)}
-                        className="h-full w-full object-contain p-3"
+                        className="h-full w-full object-contain p-5 drop-shadow-xl"
                         loading="lazy"
                       />
                     ) : (
@@ -851,7 +851,7 @@ export default function Home() {
                     type="button"
                     disabled={!inStock}
                     onClick={() => addToCart(product)}
-                    className="mt-auto h-12 rounded-xl bg-[#111111] text-sm font-black text-white transition active:scale-[0.98] hover:bg-[#2a2a2a] disabled:cursor-not-allowed disabled:bg-slate-300"
+                    className="primary-action mt-auto h-12 rounded-xl bg-[#111111] text-sm font-black text-white transition active:scale-[0.98] hover:bg-[#2a2a2a] disabled:cursor-not-allowed disabled:bg-slate-300"
                   >
                     {inStock ? t.add : t.out}
                   </button>
