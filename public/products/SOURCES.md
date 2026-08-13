@@ -20,4 +20,4 @@ These images are storefront assets for the current demo catalog. Replace them wi
 
 Additional food product photos were sourced from Open Food Facts where available. Open Food Facts product images are provided by contributors and are generally available under Creative Commons Attribution-ShareAlike terms.
 
-For products without a reliable reusable photo source, the demo uses locally generated Oly Select packshot cards with the correct product name, category, and price. These are placeholders designed to keep the storefront polished until the store uploads its own POS product photos.
+For products without a reliable reusable photo source, the demo uses simple local catalog placeholders with the product name and category on a plain white background. These are placeholders designed to keep the storefront clean until the store uploads its own POS product photos.

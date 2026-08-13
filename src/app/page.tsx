@@ -797,7 +797,7 @@ export default function Home() {
                 className="product-card group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                 style={{ animationDelay: `${Math.min(index, 8) * 55}ms` }}
               >
-                <div className="product-photo relative grid aspect-[1.08] place-items-center" style={{ background: accent.gradient }}>
+                <div className="product-photo relative grid aspect-[1.08] place-items-center bg-white">
                   <span
                     className="absolute left-3 top-3 z-10 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-black uppercase shadow-sm backdrop-blur"
                     style={{ color: accent.text }}
@@ -805,14 +805,14 @@ export default function Home() {
                     {categoryName(product.category, language)}
                   </span>
                   <div
-                    className="grid h-full w-full place-items-center overflow-hidden text-4xl font-black transition duration-500 group-hover:scale-[1.04]"
+                    className="grid h-full w-full place-items-center overflow-hidden text-4xl font-black transition duration-300 group-hover:scale-[1.02]"
                     style={{ color: accent.text }}
                   >
                     {productImage(product) ? (
                       <img
                         src={productImage(product)}
                         alt={productName(product, language)}
-                        className="h-full w-full object-contain p-5 drop-shadow-xl"
+                        className="h-full w-full object-contain p-3"
                         loading="lazy"
                       />
                     ) : (

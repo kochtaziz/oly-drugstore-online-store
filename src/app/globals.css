@@ -101,19 +101,6 @@ textarea {
   animation: action-shine 760ms ease;
 }
 
-.product-photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.55), transparent 45%, rgba(17, 17, 17, 0.04));
-  opacity: 0.7;
-}
-
-.product-card:hover .product-photo::after {
-  animation: photo-sheen 900ms ease;
-}
-
 @keyframes reveal {
   from {
     opacity: 0;
@@ -151,18 +138,6 @@ textarea {
   }
   to {
     transform: translateX(140%);
-  }
-}
-
-@keyframes photo-sheen {
-  from {
-    opacity: 0.35;
-  }
-  55% {
-    opacity: 0.95;
-  }
-  to {
-    opacity: 0.7;
   }
 }
 
